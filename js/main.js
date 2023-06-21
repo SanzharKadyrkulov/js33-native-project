@@ -111,6 +111,6 @@ addForm.addEventListener("submit", (e) => {
 document.addEventListener("click", (e) => {
 	//? блок if сработает только если мы нажали на элемент с классом btn-delete (на кнопку delete)
 	if (e.target.classList.contains("btn-delete")) {
-		deleteProduct(e.target.id);
+		deleteProduct(e.target.id); //? вызов функции deleteProduct
 	}
 });
