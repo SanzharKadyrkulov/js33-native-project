@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- ? подключение стилей bootstrap -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+			crossorigin="anonymous"
+		/>
+		<!-- ? название вкладки -->
+		<title>JS vol.33</title>
+	</head>
+	<body>
+		<!-- ? Navbar starts -->
+		<nav class="navbar bg-dark navbar-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand">Navbar</a>
+				<!-- ? Search starts -->
+				<form class="d-flex" role="search">
+					<input
+						class="form-control me-2"
+						id="search"
+						type="search"
+						placeholder="Search"
+						aria-label="Search"
+					/>
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+				<!-- ? Search ends -->
+			</div>
+		</nav>
+		<!-- ? Navbar ends -->
+
+		<!-- ? Add form starts -->
+		<form
+			class="d-flex flex-column w-100 align-items-center mt-5"
+			id="add-form"
+		>
+			<h2>Admin panel</h2>
+			<input
+				id="title"
+				placeholder="title"
+				type="text"
+				class="inp form-control w-50 mb-2"
+			/>
+			<input
+				id="price"
+				placeholder="price"
+				type="text"
+				class="inp form-control w-50 mb-2"
+			/>
+			<input
+				id="description"
+				placeholder="description"
+				type="text"
+				class="inp form-control w-50 mb-2"
+			/>
+			<input
+				id="image"
+				placeholder="image"
+				type="text"
+				class="inp form-control w-50 mb-2"
+			/>
+
+			<button class="btn btn-dark w-50">Add product</button>
+		</form>
+
+		<!-- ? Add form ends -->
+
+		<!-- ? Products List  starts -->
+		<div
+			id="products-list"
+			class="d-flex flex-wrap justify-content-center"
+		></div>
+		<!-- ? Products List  ends -->
+
+		<!-- ? script для подключения js bootstrap -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+			crossorigin="anonymous"
+		></script>
+		<!-- ? script для подключения нашего js -->
+		<script src="./js/main.js"></script>
+	</body>
+</html>
