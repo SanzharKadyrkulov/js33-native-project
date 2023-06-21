@@ -65,7 +65,8 @@ async function render() {
 				<h5 class="card-title">${item.title}</h5>
 				<p class="card-text">${item.description.slice(0, 70)}...</p>
 				<p class="card-text">${item.price}$</p>
-				<button class="btn btn-dark w-25">Edit</button>
+				<button data-bs-toggle="modal"
+				data-bs-target="#exampleModal" class="btn btn-dark w-25">Edit</button>
 				<button id="${item.id}" class="btn btn-danger btn-delete">Delete</button>
 			</div>
 		</div>
