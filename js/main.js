@@ -33,6 +33,16 @@ async function addProduct(newProduct) {
 	render();
 }
 
+// ? функция для удаления
+async function deleteProduct(id) {
+	//? запрос на удаление
+	await fetch(`${API}/${id}`, {
+		method: "DELETE",
+	});
+	//? стянуть и отобразить актуальные данные
+	render();
+}
+
 //? первоначальное отображение данных
 render();
 
@@ -56,7 +66,7 @@ async function render() {
 				<p class="card-text">${item.description.slice(0, 70)}...</p>
 				<p class="card-text">${item.price}$</p>
 				<button class="btn btn-dark w-25">Edit</button>
-				<button class="btn btn-danger">Delete</button>
+				<button id="${item.id}" class="btn btn-danger btn-delete">Delete</button>
 			</div>
 		</div>
 		`;
@@ -95,4 +105,12 @@ addForm.addEventListener("submit", (e) => {
 	priceInp.value = "";
 	descriptionInp.value = "";
 	imageInp.value = "";
+});
+
+// ? обработчик события для удаления
+document.addEventListener("click", (e) => {
+	//? блок if сработает только если мы нажали на элемент с классом btn-delete (на кнопку delete)
+	if (e.target.classList.contains("btn-delete")) {
+		deleteProduct(e.target.id); //? вызов функции deleteProduct
+	}
 });
