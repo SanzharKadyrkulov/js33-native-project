@@ -12,6 +12,15 @@ const priceInp = document.querySelector("#price");
 const descriptionInp = document.querySelector("#description");
 const imageInp = document.querySelector("#image");
 
+// ? форма с инпутами для изменения
+const editForm = document.querySelector("#edit-form");
+const editTitleInp = document.querySelector("#edit-title");
+const editPriceInp = document.querySelector("#edit-price");
+const editDescriptionInp = document.querySelector("#edit-description");
+const editImageInp = document.querySelector("#edit-image");
+// const myModalEl = document.querySelector(".modal");
+// const modal = bootstrap.Modal.getInstance(myModalEl);
+
 async function getProducts() {
 	const res = await fetch(API); //? запрос на получение данных
 	const data = await res.json(); //? расшивровка данных
@@ -43,6 +52,23 @@ async function deleteProduct(id) {
 	render();
 }
 
+async function getOneProduct(id) {
+	const res = await fetch(`${API}/${id}`);
+	const data = await res.json();
+	return data;
+}
+
+async function editProduct(id, newData) {
+	await fetch(`${API}/${id}`, {
+		method: "PATCH",
+		body: JSON.stringify(newData),
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
+	render();
+}
+
 //? первоначальное отображение данных
 render();
 
@@ -65,8 +91,8 @@ async function render() {
 				<h5 class="card-title">${item.title}</h5>
 				<p class="card-text">${item.description.slice(0, 70)}...</p>
 				<p class="card-text">${item.price}$</p>
-				<button data-bs-toggle="modal"
-				data-bs-target="#exampleModal" class="btn btn-dark w-25">Edit</button>
+				<button id="${item.id}" data-bs-toggle="modal"
+				data-bs-target="#exampleModal" class="btn btn-dark w-25 btn-edit">Edit</button>
 				<button id="${item.id}" class="btn btn-danger btn-delete">Delete</button>
 			</div>
 		</div>
@@ -114,4 +140,39 @@ document.addEventListener("click", (e) => {
 	if (e.target.classList.contains("btn-delete")) {
 		deleteProduct(e.target.id); //? вызов функции deleteProduct
 	}
+});
+
+let id = null;
+document.addEventListener("click", async (e) => {
+	if (e.target.classList.contains("btn-edit")) {
+		id = e.target.id;
+		const product = await getOneProduct(id);
+
+		editTitleInp.value = product.title;
+		editPriceInp.value = product.price;
+		editDescriptionInp.value = product.description;
+		editImageInp.value = product.image;
+	}
+});
+
+editForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+	if (
+		!editTitleInp.value.trim() ||
+		!editPriceInp.value.trim() ||
+		!editDescriptionInp.value.trim() ||
+		!editImageInp.value.trim()
+	) {
+		alert("Заполните все поля");
+		return;
+	}
+
+	const newData = {
+		title: editTitleInp.value,
+		price: editPriceInp.value,
+		description: editDescriptionInp.value,
+		image: editImageInp.value,
+	};
+
+	editProduct(id, newData);
 });
