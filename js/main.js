@@ -18,11 +18,42 @@ const editTitleInp = document.querySelector("#edit-title");
 const editPriceInp = document.querySelector("#edit-price");
 const editDescriptionInp = document.querySelector("#edit-description");
 const editImageInp = document.querySelector("#edit-image");
+
+// ? кнопка для скрытия и показа Admin panel
+const adminPanelBtnShow = document.querySelector(".admin-panel-btn-show");
+const adminPanelBtnHide = document.querySelector(".admin-panel-btn-hide");
 // const myModalEl = document.querySelector(".modal");
 // const modal = bootstrap.Modal.getInstance(myModalEl);
 
+
 //? Достаем кнопку
 const changeMode = document.querySelector(".theme");
+
+//todo Код для показа Admin panel
+addForm.style.visibility = "hidden";
+addForm.style.position = "absolute";
+adminPanelBtnHide.style.visibility = "hidden";
+adminPanelBtnHide.style.position = "absolute";
+
+adminPanelBtnShow.addEventListener("click", (e) => {
+  addForm.style.visibility = "visible";
+  addForm.style.position = "static";
+  adminPanelBtnShow.style.visibility = "hidden";
+  adminPanelBtnShow.style.position = "absolute";
+  adminPanelBtnHide.style.visibility = "visible";
+  adminPanelBtnHide.style.position = "static";
+});
+
+//todo Код для скрытия Admin panel
+adminPanelBtnHide.addEventListener("click", (e) => {
+  addForm.style.visibility = "hidden";
+  addForm.style.position = "absolute";
+  adminPanelBtnHide.style.visibility = "hidden";
+  adminPanelBtnHide.style.position = "absolute";
+  adminPanelBtnShow.style.visibility = "visible";
+  adminPanelBtnShow.style.position = "static";
+});
+
 
 async function getProducts() {
   const res = await fetch(API); //? запрос на получение данных
@@ -178,6 +209,7 @@ editForm.addEventListener("submit", (e) => {
   };
 
   editProduct(id, newData);
+
 });
 
 //? Функция для смены темы
@@ -196,4 +228,5 @@ changeMode.addEventListener("click", async (e) => {
   for (let i of cards) {
     i.classList.toggle("dark-mode-cards");
   }
+
 });

@@ -80,6 +80,7 @@
         --bg-color: rgb(197, 197, 197);
       }
     </style>
+
     <!-- ? название вкладки -->
     <title>JS vol.33</title>
   </head>
@@ -88,6 +89,23 @@
     <nav class="navbar bg-dark navbar-dark">
       <div class="container-fluid">
         <a class="navbar-brand">Navbar</a>
+
+        <div style="margin-left: 200px" aria-label="Basic example">
+          <button
+            style="font-weight: 500; width: 170px"
+            class="admin-panel-btn-show btn btn-outline-success"
+          >
+            Show Admin Panel
+          </button>
+
+          <button
+            style="font-weight: 500; width: 170px"
+            class="admin-panel-btn-hide btn btn-outline-danger"
+          >
+            Hide Admin Panel
+          </button>
+        </div>
+
         <!-- ? Search starts -->
         <form class="d-flex" role="search">
           <input
@@ -103,6 +121,7 @@
       </div>
     </nav>
     <!-- ? Navbar ends -->
+
 
     <!-- ?Button for theme -->
     <button class="theme">
@@ -145,12 +164,14 @@
 
     <!-- ? Add form ends -->
 
+
     <!-- ? Products List  starts -->
     <div
       id="products-list"
       class="d-flex flex-wrap justify-content-center"
     ></div>
     <!-- ? Products List  ends -->
+
 
     <!-- ? Edit Modal starts -->
     <div
