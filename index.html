@@ -10,6 +10,9 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
+
+      
+
     <style>
       body {
         background-color: var(--bg-color);
@@ -79,16 +82,24 @@
       :root {
         --bg-color: rgb(197, 197, 197);
       }
+      
+      .card img {
+        width: 100%;
+        height: 12rem;
+        object-fit: cover;
+      }
     </style>
 
     <!-- ? название вкладки -->
     <title>JS vol.33</title>
+
   </head>
   <body>
     <!-- ? Navbar starts -->
     <nav class="navbar bg-dark navbar-dark">
       <div class="container-fluid">
         <a class="navbar-brand">Navbar</a>
+
 
         <div style="margin-left: 200px" aria-label="Basic example">
           <button
@@ -105,6 +116,7 @@
             Hide Admin Panel
           </button>
         </div>
+
 
         <!-- ? Search starts -->
         <form class="d-flex" role="search">
@@ -123,10 +135,12 @@
     <!-- ? Navbar ends -->
 
 
+
     <!-- ?Button for theme -->
     <button class="theme">
       <span>Change mode</span>
     </button>
+
 
     <!-- ? Add form starts -->
     <form
@@ -171,7 +185,6 @@
       class="d-flex flex-wrap justify-content-center"
     ></div>
     <!-- ? Products List  ends -->
-
 
     <!-- ? Edit Modal starts -->
     <div
