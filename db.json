@@ -18,7 +18,7 @@
       "id": 3,
       "title": "Dell XPS 13",
       "image": "https://avatars.mds.yandex.net/i?id=fc2d43ff2ac97e81eb3f6d8b08966b9e42f68a0f-4613979-images-thumbs&n=13",
-      "price": "1199",
+      "price": "1190",
       "description": "Дисплей – 13,3 дюйма, разрешение – Full HD (1920x1080 пикселей), IPS, матовый Процессор – Intel Core i5-8250U (4 ядра, 8 потоков, штатная частота – 1,6 ГГц, максимальная частота в Turbo-режиме - 3,4 ГГц, Intel Smart Cache - 6 МБ, TDP - от 15 до 25 Вт) Графика – встроенная Intel UHD 620 Оперативная память – 8 ГБ DDR4 - 2133 МГц"
     },
     {
@@ -149,4 +149,3 @@
     }
   ]
 }
-
