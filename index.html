@@ -84,6 +84,44 @@
 				height: 12rem;
 				object-fit: cover;
 			}
+			.radio-inputs {
+				position: relative;
+				display: flex;
+				flex-wrap: wrap;
+				border-radius: 0.5rem;
+				background-color: #eee;
+				box-sizing: border-box;
+				box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+				padding: 0.25rem;
+				width: 300px;
+				font-size: 14px;
+			}
+
+			.radio-inputs .radio {
+				flex: 1 1 auto;
+				text-align: center;
+			}
+
+			.radio-inputs .radio input {
+				display: none;
+			}
+
+			.radio-inputs .radio .name {
+				display: flex;
+				cursor: pointer;
+				align-items: center;
+				justify-content: center;
+				border-radius: 0.5rem;
+				border: none;
+				padding: 0.5rem 0;
+				color: rgba(51, 65, 85, 1);
+				transition: all 0.15s ease-in-out;
+			}
+
+			.radio-inputs .radio input:checked + .name {
+				background-color: #fff;
+				font-weight: 600;
+			}
 		</style>
 
 		<!-- ? название вкладки -->
@@ -151,6 +189,7 @@
 				type="text"
 				class="inp form-control w-50 mb-2"
 			/>
+
 			<input
 				id="description"
 				placeholder="description"
@@ -163,11 +202,35 @@
 				type="text"
 				class="inp form-control w-50 mb-2"
 			/>
+			<div class="form-floating mb-2 w-50">
+				<select class="form-select" id="category">
+					<option value="office" selected>Office</option>
+					<option value="gaming">Gaming</option>
+				</select>
+				<label for="category">category</label>
+			</div>
 
 			<button class="btn btn-dark w-50">Add product</button>
 		</form>
 
 		<!-- ? Add form ends -->
+		<!-- ? Filter starts -->
+		<div class="radio-inputs mt-5 mx-auto">
+			<label class="radio">
+				<input id="" type="radio" name="radio" checked="" />
+				<span class="name">All</span>
+			</label>
+			<label class="radio">
+				<input id="gaming" type="radio" name="radio" />
+				<span class="name">Gaming</span>
+			</label>
+
+			<label class="radio">
+				<input id="office" type="radio" name="radio" />
+				<span class="name">Office</span>
+			</label>
+		</div>
+		<!-- ? Filter ends -->
 
 		<!-- ? Products List  starts -->
 		<div
@@ -226,6 +289,14 @@
 								type="text"
 								class="inp form-control w-50 mb-2"
 							/>
+
+							<div class="form-floating mb-2 w-50">
+								<select class="form-select" id="edit-category">
+									<option value="office" selected>Office</option>
+									<option value="gaming">Gaming</option>
+								</select>
+								<label for="edit-category">category</label>
+							</div>
 
 							<button class="btn btn-dark w-50 mb-2">Save</button>
 						</form>
