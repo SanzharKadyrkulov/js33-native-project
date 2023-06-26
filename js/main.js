@@ -11,6 +11,7 @@ const titleInp = document.querySelector("#title");
 const priceInp = document.querySelector("#price");
 const descriptionInp = document.querySelector("#description");
 const imageInp = document.querySelector("#image");
+const categoryInp = document.querySelector("#category");
 
 // ? форма с инпутами для изменения
 const editForm = document.querySelector("#edit-form");
@@ -18,12 +19,17 @@ const editTitleInp = document.querySelector("#edit-title");
 const editPriceInp = document.querySelector("#edit-price");
 const editDescriptionInp = document.querySelector("#edit-description");
 const editImageInp = document.querySelector("#edit-image");
+const editCategoryInp = document.querySelector("#edit-category");
 const exampleModal = document.querySelector("#exampleModal");
 
 //? поиск
 const searchInput = document.querySelector("#search");
 //? переиенная для запроса на поиск
 let searchVal = "";
+
+// ? фильтрация
+const radios = document.querySelectorAll("input[type='radio']");
+let category = "";
 
 //? элементы пагинации
 const paginationList = document.querySelector(".pagination-list");
@@ -77,8 +83,9 @@ async function getProducts() {
 	//? _limit это максимальное количество элементов на одной странице
 	//? _page чтобы элементы на определенной странице
 	const res = await fetch(
-		`${API}?title_like=${searchVal}&_limit=${limit}&_page=${currentPage}`
+		`${API}?title_like=${searchVal}&_limit=${limit}&_page=${currentPage}&category_like=${category}`
 	); //? запрос на получение данных
+
 	const data = await res.json(); //? расшивровка данных
 	// ? x-total-count общее кол-во продуктов
 	const count = res.headers.get("x-total-count");
@@ -184,6 +191,7 @@ addForm.addEventListener("submit", (e) => {
 		price: priceInp.value,
 		description: descriptionInp.value,
 		image: imageInp.value,
+		category: categoryInp.value,
 	};
 
 	//? добавляем обьект в db.json
@@ -234,6 +242,7 @@ editForm.addEventListener("submit", (e) => {
 		price: editPriceInp.value,
 		description: editDescriptionInp.value,
 		image: editImageInp.value,
+		category: editCategoryInp.value,
 	};
 
 	editProduct(id, newData);
@@ -298,7 +307,7 @@ prev.addEventListener("click", () => {
 //? обработчик события чтобы перейти на определенную страницу
 document.addEventListener("click", (e) => {
 	if (e.target.classList.contains("page-number")) {
-		currentPage = +e.target.textContent;
+		currentPage = +e.target.innerText;
 		render();
 	}
 });
@@ -307,4 +316,12 @@ searchInput.addEventListener("input", (e) => {
 	searchVal = searchInput.value;
 	currentPage = 1;
 	render();
+});
+
+// ? фильтрация
+radios.forEach((item) => {
+	item.addEventListener("change", (e) => {
+		category = e.target.id;
+		render();
+	});
 });
